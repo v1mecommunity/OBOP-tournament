@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#08090f">
+  <meta name="description" content="Tournament Solutions — навчальний B2B-проєкт із розробки вебплатформ для спортивних і кіберспортивних турнірів.">
+  <title>Tournament Solutions — платформи для турнірів</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    :root { --ts-mint:#92e5c5; --ts-violet:#9b6cff; }
+    .ts-nav { margin-left:auto; display:flex; align-items:center; gap:clamp(14px,2.6vw,32px); }
+    .ts-nav a { color:var(--muted); font-size:13px; }
+    .ts-nav a:hover { color:var(--text); }
+    .ts-hero { padding:clamp(64px,10vw,120px) 0 78px; background:radial-gradient(ellipse at 79% 30%,rgba(124,58,237,.17),transparent 36%); }
+    .ts-hero-grid { display:grid; grid-template-columns:1.05fr .95fr; align-items:center; gap:clamp(35px,7vw,88px); }
+    .ts-kicker,.ts-label { color:var(--ts-violet); font-size:11px; font-weight:750; letter-spacing:.15em; text-transform:uppercase; }
+    .ts-kicker { margin:0 0 18px; }
+    .ts-dot { display:inline-block; width:8px; height:8px; margin-right:8px; border-radius:50%; background:var(--ts-mint); box-shadow:0 0 14px rgba(146,229,197,.7); }
+    .ts-hero h1 { max-width:760px; margin:0 0 24px; font-size:clamp(44px,6.4vw,78px); line-height:.99; letter-spacing:-.065em; }
+    .ts-hero h1 span { color:var(--ts-violet); }
+    .ts-lede { max-width:590px; margin:0; color:#c8c5d2; font-size:clamp(16px,1.7vw,20px); }
+    .ts-actions { display:flex; flex-wrap:wrap; gap:14px; margin-top:31px; }
+    .ts-actions .button { display:inline-flex; align-items:center; justify-content:center; min-height:48px; }
+    .ts-caption { margin:18px 0 0; color:var(--muted); font-size:12px; }
+    .ts-preview { position:relative; margin:0; padding:12px; overflow:hidden; border:1px solid var(--border-purple); border-radius:14px; background:linear-gradient(145deg,rgba(124,58,237,.16),var(--card) 62%); box-shadow:0 24px 70px rgba(0,0,0,.34); }
+    .ts-preview img { display:block; width:100%; border-radius:7px; }
+    .ts-preview figcaption { padding:12px 4px 1px; color:var(--muted); font-size:11px; }
+    .ts-proof { border-block:1px solid var(--border); background:rgba(255,255,255,.025); }
+    .ts-proof-inner { display:flex; align-items:center; justify-content:space-between; gap:18px; min-height:74px; flex-wrap:wrap; }
+    .ts-proof strong { color:#d5d2dc; font-size:13px; font-weight:600; }
+    .ts-proof span { color:var(--ts-mint); font-size:10px; font-weight:700; letter-spacing:.12em; }
+    .ts-section { padding:clamp(68px,9vw,112px) 0; border-bottom:1px solid var(--border); }
+    .ts-two-col { display:grid; grid-template-columns:.85fr 1.15fr; gap:clamp(40px,9vw,130px); }
+    .ts-section h2 { margin:12px 0 0; font-size:clamp(34px,4.5vw,55px); line-height:1.06; letter-spacing:-.055em; }
+    .ts-copy { max-width:650px; color:#c8c5d2; font-size:17px; }
+    .ts-copy p:last-child { margin-bottom:0; }
+    .ts-accent-copy { margin-top:23px; padding-left:17px; border-left:2px solid var(--ts-mint); color:var(--text); }
+    .ts-feature-list { border-top:1px solid var(--border); }
+    .ts-feature { display:grid; grid-template-columns:58px 1fr; gap:12px; padding:19px 0; border-bottom:1px solid var(--border); }
+    .ts-feature b { color:var(--ts-mint); font-size:12px; }
+    .ts-feature h3 { margin:-4px 0 5px; font-size:19px; }
+    .ts-feature p { margin:0; color:var(--muted); font-size:14px; }
+    .ts-process { background:radial-gradient(ellipse at 17% 45%,rgba(124,58,237,.13),transparent 45%),var(--bg-light); }
+    .ts-process-grid { display:grid; grid-template-columns:.8fr 1.2fr; gap:clamp(40px,9vw,130px); }
+    .ts-step { display:grid; grid-template-columns:54px 1fr; gap:12px; padding:20px 0; border-bottom:1px solid var(--border); }
+    .ts-step:first-child { border-top:1px solid var(--border); }
+    .ts-step b { color:var(--ts-mint); font-size:12px; }
+    .ts-step h3 { margin:-4px 0 5px; font-size:18px; }
+    .ts-step p { margin:0; color:var(--muted); font-size:14px; }
+    .ts-legal { margin-top:22px; padding:15px 18px; border-left:2px solid #796a91; background:rgba(255,255,255,.035); color:#aaa6b3; font-size:13px; }
+    .ts-footer-note { max-width:760px; color:var(--muted); font-size:12px; }
+    .ts-demo { padding:clamp(58px,8vw,96px) 0; border-bottom:1px solid var(--border); background:linear-gradient(180deg,rgba(124,58,237,.07),transparent 40%); }
+    .ts-demo-heading { display:flex; align-items:end; justify-content:space-between; gap:24px; margin-bottom:28px; }
+    .ts-demo-heading h2 { margin:9px 0 0; font-size:clamp(32px,4vw,48px); line-height:1.05; letter-spacing:-.05em; }
+    .ts-demo-heading p { max-width:360px; margin:0; color:var(--muted); font-size:13px; }
+    .ts-tabs { display:flex; gap:8px; overflow-x:auto; padding:0 0 12px; border-bottom:1px solid var(--border); scrollbar-width:thin; }
+    .ts-tab { flex:0 0 auto; padding:10px 15px; border:1px solid transparent; border-radius:8px; background:transparent; color:var(--muted); font-size:13px; font-weight:700; cursor:pointer; }
+    .ts-tab:hover { color:var(--text); background:rgba(255,255,255,.04); }
+    .ts-tab[aria-selected="true"] { border-color:rgba(155,108,255,.35); background:rgba(124,58,237,.17); color:#fff; }
+    .ts-panel { padding:26px 0 4px; }
+    .ts-panel[hidden] { display:none; }
+    .ts-panel-title { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:18px; }
+    .ts-panel-title h3 { margin:0; font-size:20px; }
+    .ts-demo-tag { padding:5px 9px; border:1px solid rgba(146,229,197,.27); border-radius:99px; color:var(--ts-mint); font-size:10px; font-weight:750; letter-spacing:.08em; text-transform:uppercase; }
+    .ts-tournament-grid,.ts-news-grid,.ts-team-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; }
+    .ts-demo-card { min-width:0; padding:20px; border:1px solid var(--border); border-radius:12px; background:rgba(17,17,24,.86); }
+    .ts-demo-card small { color:var(--ts-violet); font-size:10px; font-weight:750; letter-spacing:.1em; text-transform:uppercase; }
+    .ts-demo-card h4 { margin:9px 0 7px; font-size:18px; }
+    .ts-demo-card p { margin:0; color:var(--muted); font-size:13px; }
+    .ts-demo-meta { display:flex; flex-wrap:wrap; gap:8px 15px; margin-top:16px; padding-top:14px; border-top:1px solid var(--border); color:#d3cfdd; font-size:11px; }
+    .ts-bracket { display:grid; grid-template-columns:repeat(3,minmax(130px,1fr)); gap:22px; align-items:center; overflow-x:auto; padding:12px 2px 18px; }
+    .ts-round h4 { margin:0 0 13px; color:var(--muted); font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; }
+    .ts-match { margin:0 0 12px; overflow:hidden; border:1px solid var(--border); border-radius:8px; background:var(--card); }
+    .ts-match div { display:flex; justify-content:space-between; gap:15px; padding:10px 12px; color:#dedbe5; font-size:12px; }
+    .ts-match div + div { border-top:1px solid var(--border); }
+    .ts-match b { color:var(--ts-mint); }
+    .ts-schedule { width:100%; border-collapse:collapse; text-align:left; }
+    .ts-schedule th,.ts-schedule td { padding:14px 12px; border-bottom:1px solid var(--border); font-size:13px; }
+    .ts-schedule th { color:var(--muted); font-size:10px; letter-spacing:.08em; text-transform:uppercase; }
+    .ts-schedule td:last-child { color:var(--ts-mint); }
+    .ts-team-mark { display:grid; place-items:center; width:42px; height:42px; margin-bottom:14px; border:1px solid rgba(155,108,255,.32); border-radius:10px; background:rgba(124,58,237,.15); color:#d3c1ff; font-weight:850; }
+    .ts-demo-footnote { margin:17px 0 0; color:var(--muted); font-size:11px; }
+    @media (max-width:760px) {
+      .header-content { min-height:72px; flex-wrap:wrap; gap:14px; padding-block:14px; }
+      .ts-nav { width:100%; margin:0; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+      .ts-nav a { font-size:12px; }
+      .ts-hero { padding-top:55px; }
+      .ts-hero-grid,.ts-two-col,.ts-process-grid { grid-template-columns:1fr; gap:34px; }
+      .ts-hero h1 { font-size:clamp(43px,12vw,64px); }
+      .ts-proof-inner { justify-content:flex-start; padding-block:17px; }
+      .ts-proof span { width:100%; }
+      .ts-demo-heading { align-items:flex-start; flex-direction:column; }
+      .ts-tournament-grid,.ts-news-grid,.ts-team-grid { grid-template-columns:1fr; }
+      .ts-schedule { min-width:540px; }
+      .ts-table-wrap { overflow-x:auto; }
+    }
+    @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container header-content">
+      <a class="logo" href="#top" aria-label="Tournament Solutions — на головну"><strong>TOURNAMENT</strong><small>SOLUTIONS</small></a>
+      <nav class="ts-nav" aria-label="Навігація сторінкою">
+        <a href="#demo">Турніри</a>
+        <a href="#demo" data-open-tab="bracket">Сітка</a>
+        <a href="#demo" data-open-tab="news">Новини</a>
+        <a href="#solution">Про платформу</a>
+      </nav>
+    </div>
+  </header>
+  <main id="top">
+    <section class="ts-hero">
+      <div class="container ts-hero-grid">
+        <div>
+          <p class="ts-kicker"><i class="ts-dot" aria-hidden="true"></i>B2B · РОЗРОБКА НА ЗАМОВЛЕННЯ</p>
+          <h1>Турнірна платформа <span>під ваші правила.</span></h1>
+          <p class="ts-lede">Вебсистеми для спортивних і кіберспортивних змагань — під процеси конкретного організатора.</p>
+          <div class="ts-actions"><a class="button primary" href="#features">Можливості платформи ↓</a><a class="button secondary" href="#process">Як працюємо</a></div>
+          <p class="ts-caption">Навчальний бізнес-проєкт · Сценарій Б · Україна</p>
+        </div>
+        <figure class="ts-preview">
+          <img src="duel-cup-banner.svg" alt="Графічний приклад турнірної платформи для CS2">
+          <figcaption>Візуальний приклад прототипу. Турнір на зображенні — демонстраційний.</figcaption>
+        </figure>
+      </div>
+    </section>
+    <div class="ts-proof"><div class="container ts-proof-inner"><span>ПРОТОТИП ПОКАЗУЄ</span><strong>Турніри</strong><strong>Сітки</strong><strong>Матчі</strong><strong>Команди</strong><strong>Результати</strong></div></div>
+    <section class="ts-demo" id="demo" aria-labelledby="demo-title">
+      <div class="container">
+        <div class="ts-demo-heading"><div><p class="ts-label">ДЕМО ПЛАТФОРМИ</p><h2 id="demo-title">Усе для турніру — тут.</h2></div><p>Перемикай вкладки й подивись, як можуть виглядати турніри, сітки, матчі та новини.</p></div>
+        <div class="ts-tabs" role="tablist" aria-label="Розділи платформи">
+          <button class="ts-tab" id="tab-tournaments" type="button" role="tab" aria-selected="true" aria-controls="panel-tournaments" data-tab="tournaments">Турніри</button>
+          <button class="ts-tab" id="tab-bracket" type="button" role="tab" aria-selected="false" aria-controls="panel-bracket" data-tab="bracket" tabindex="-1">Сітка</button>
+          <button class="ts-tab" id="tab-matches" type="button" role="tab" aria-selected="false" aria-controls="panel-matches" data-tab="matches" tabindex="-1">Матчі</button>
+          <button class="ts-tab" id="tab-teams" type="button" role="tab" aria-selected="false" aria-controls="panel-teams" data-tab="teams" tabindex="-1">Команди</button>
+          <button class="ts-tab" id="tab-news" type="button" role="tab" aria-selected="false" aria-controls="panel-news" data-tab="news" tabindex="-1">Новини</button>
+        </div>
+        <div class="ts-panel" id="panel-tournaments" role="tabpanel" aria-labelledby="tab-tournaments" data-panel="tournaments">
+          <div class="ts-panel-title"><h3>Турніри</h3><span class="ts-demo-tag">Приклад інтерфейсу</span></div>
+          <div class="ts-tournament-grid">
+            <article class="ts-demo-card"><small>CS2 · Командний</small><h4>Duel Cup</h4><p>Турнірна сторінка з форматом, правилами й учасниками.</p><div class="ts-demo-meta"><span>8 команд</span><span>Single elimination</span></div></article>
+            <article class="ts-demo-card"><small>VALORANT · Командний</small><h4>Campus Series</h4><p>Окремий формат з груповим етапом і фінальною сіткою.</p><div class="ts-demo-meta"><span>16 команд</span><span>Групи + плей-оф</span></div></article>
+            <article class="ts-demo-card"><small>CS2 · Онлайн</small><h4>Weekly Arena</h4><p>Компактний турнір із розкладом і оновленням рахунків.</p><div class="ts-demo-meta"><span>8 команд</span><span>Демо-дані</span></div></article>
+          </div>
+        </div>
+        <div class="ts-panel" id="panel-bracket" role="tabpanel" aria-labelledby="tab-bracket" data-panel="bracket" hidden>
+          <div class="ts-panel-title"><h3>Сітка плей-оф</h3><span class="ts-demo-tag">Демо-результати</span></div>
+          <div class="ts-bracket">
+            <div class="ts-round"><h4>Півфінали</h4><article class="ts-match"><div><span>North Wolves</span><b>13</b></div><div><span>Pixel Forge</span><b>8</b></div></article><article class="ts-match"><div><span>Nova Squad</span><b>10</b></div><div><span>Red Lynx</span><b>13</b></div></article></div>
+            <div class="ts-round"><h4>Фінал</h4><article class="ts-match"><div><span>North Wolves</span><b>—</b></div><div><span>Red Lynx</span><b>—</b></div></article></div>
+            <div class="ts-round"><h4>Переможець</h4><article class="ts-demo-card"><small>Фінал ще попереду</small><h4>🏆 Duel Cup</h4><p>Переможець з’явиться після матчу.</p></article></div>
+          </div>
+        </div>
+        <div class="ts-panel" id="panel-matches" role="tabpanel" aria-labelledby="tab-matches" data-panel="matches" hidden>
+          <div class="ts-panel-title"><h3>Матчі та розклад</h3><span class="ts-demo-tag">Умовні дані</span></div>
+          <div class="ts-table-wrap"><table class="ts-schedule"><thead><tr><th>Етап</th><th>Матч</th><th>Рахунок</th><th>Статус</th></tr></thead><tbody><tr><td>Півфінал</td><td>North Wolves — Pixel Forge</td><td>13 : 8</td><td>Завершено</td></tr><tr><td>Півфінал</td><td>Nova Squad — Red Lynx</td><td>10 : 13</td><td>Завершено</td></tr><tr><td>Фінал</td><td>North Wolves — Red Lynx</td><td>— : —</td><td>Очікується</td></tr></tbody></table></div>
+        </div>
+        <div class="ts-panel" id="panel-teams" role="tabpanel" aria-labelledby="tab-teams" data-panel="teams" hidden>
+          <div class="ts-panel-title"><h3>Команди</h3><span class="ts-demo-tag">Картки учасників</span></div>
+          <div class="ts-team-grid">
+            <article class="ts-demo-card"><div class="ts-team-mark">NW</div><h4>North Wolves</h4><p>Склад команди та її шлях у турнірі.</p><div class="ts-demo-meta"><span>2 перемоги</span><span>CS2</span></div></article>
+            <article class="ts-demo-card"><div class="ts-team-mark">PF</div><h4>Pixel Forge</h4><p>Профіль учасника з результатами матчів.</p><div class="ts-demo-meta"><span>1 перемога</span><span>CS2</span></div></article>
+            <article class="ts-demo-card"><div class="ts-team-mark">RL</div><h4>Red Lynx</h4><p>Історія виступів і поточний статус.</p><div class="ts-demo-meta"><span>2 перемоги</span><span>CS2</span></div></article>
+          </div>
+        </div>
+        <div class="ts-panel" id="panel-news" role="tabpanel" aria-labelledby="tab-news" data-panel="news" hidden>
+          <div class="ts-panel-title"><h3>Новини</h3><span class="ts-demo-tag">Приклад стрічки</span></div>
+          <div class="ts-news-grid">
+            <article class="ts-demo-card"><small>ОНОВЛЕННЯ · ДЕМО</small><h4>Оприлюднено сітку плей-оф</h4><p>Учасники можуть переглянути пари та шлях до фіналу на сторінці турніру.</p><div class="ts-demo-meta"><span>Новина турніру</span></div></article>
+            <article class="ts-demo-card"><small>РЕЗУЛЬТАТИ · ДЕМО</small><h4>Відомі фіналісти</h4><p>North Wolves та Red Lynx зустрінуться у вирішальному матчі.</p><div class="ts-demo-meta"><span>Оновлення результатів</span></div></article>
+            <article class="ts-demo-card"><small>АНОНС · ДЕМО</small><h4>Стартує наступний сезон</h4><p>Організатор може публікувати важливі оголошення для учасників.</p><div class="ts-demo-meta"><span>Новина організатора</span></div></article>
+          </div>
+        </div>
+        <p class="ts-demo-footnote">Усі назви, рахунки й турніри в цьому блоці — демонстраційні. Це макет функцій, не реальні змагання.</p>
+      </div>
+    </section>
+    <section class="ts-section" id="solution">
+      <div class="container ts-two-col">
+        <div><p class="ts-label">01 / ЗАДАЧА</p><h2>Керування турніром — в одній системі.</h2></div>
+        <div class="ts-copy"><p>Організаторам потрібні зрозумілі інструменти для розкладу, сітки, команд і результатів. Ми проєктуємо платформу за правилами конкретного змагання.</p><p class="ts-accent-copy">Робочий прототип дає основу, яку можна адаптувати під вимоги замовника.</p></div>
+      </div>
+    </section>
+    <section class="ts-section" id="features">
+      <div class="container ts-two-col">
+        <div><p class="ts-label">02 / МОЖЛИВОСТІ</p><h2>Основні етапи змагання — разом.</h2></div>
+        <div class="ts-feature-list">
+          <article class="ts-feature"><b>01</b><div><h3>Сітка й календар</h3><p>Структура турніру та послідовність матчів.</p></div></article>
+          <article class="ts-feature"><b>02</b><div><h3>Матчі й результати</h3><p>Рахунки, статуси та перебіг змагання.</p></div></article>
+          <article class="ts-feature"><b>03</b><div><h3>Команди й рейтинг</h3><p>Сторінки команд, профілі та таблиці результатів.</p></div></article>
+          <article class="ts-feature"><b>04</b><div><h3>Панель організатора</h3><p>Керування турнірами та оновленням інформації.</p></div></article>
+        </div>
+      </div>
+    </section>
+    <section class="ts-section ts-process" id="process">
+      <div class="container ts-process-grid">
+        <div><p class="ts-label">03 / ПРОЦЕС</p><h2>Від вимог до запуску.</h2><p class="ts-copy">Робота починається з формату й правил конкретного турніру.</p></div>
+        <div>
+          <article class="ts-step"><b>01</b><div><h3>Уточнюємо задачу</h3><p>Фіксуємо формат, ролі, потрібні дані й екрани.</p></div></article>
+          <article class="ts-step"><b>02</b><div><h3>Погоджуємо умови</h3><p>Описуємо обсяг, строки, оплату та приймання.</p></div></article>
+          <article class="ts-step"><b>03</b><div><h3>Розробляємо й передаємо</h3><p>Створюємо платформу та передаємо результат за контрактом.</p></div></article>
+        </div>
+      </div>
+    </section>
+    <section class="ts-section">
+      <div class="container ts-two-col">
+        <div><p class="ts-label">04 / ЮРИДИЧНА МОДЕЛЬ</p><h2>ТОВ для спільного B2B-проєкту.</h2></div>
+        <div class="ts-copy"><p>Для двох співзасновників планується ТОВ в Україні. Статут і корпоративний договір мають визначити управління, частки та вихід із партнерства.</p><p>Контракт із замовником фіксує обсяг робіт, оплату, приймання та права на програмний код.</p><p class="ts-legal">Навчальний проєкт: Tournament Solutions, польський клієнт і перший контракт умовні. Цей сайт не заявляє про реєстрацію юридичної особи чи реального замовника.</p></div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"><div class="container footer-content"><a class="logo" href="#top"><strong>TOURNAMENT</strong><small>SOLUTIONS</small></a><p class="ts-footer-note">Навчальний проєкт · Розробка вебплатформ для спортивних і кіберспортивних турнірів · © 2026</p></div></footer>
+  <script>
+    (() => {
+      const tabs = [...document.querySelectorAll('[data-tab]')];
+      const panels = [...document.querySelectorAll('[data-panel]')];
+      function activate(name, moveFocus = false) {
+        tabs.forEach((tab) => {
+          const active = tab.dataset.tab === name;
+          tab.setAttribute('aria-selected', String(active));
+          tab.tabIndex = active ? 0 : -1;
+          if (active && moveFocus) tab.focus();
+        });
+        panels.forEach((panel) => { panel.hidden = panel.dataset.panel !== name; });
+      }
+      tabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => activate(tab.dataset.tab));
+        tab.addEventListener('keydown', (event) => {
+          if (!['ArrowRight', 'ArrowLeft', 'Home', 'End'].includes(event.key)) return;
+          event.preventDefault();
+          const next = event.key === 'Home' ? 0 : event.key === 'End' ? tabs.length - 1 : (index + (event.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length;
+          activate(tabs[next].dataset.tab, true);
+        });
+      });
+      document.querySelectorAll('[data-open-tab]').forEach((link) => link.addEventListener('click', () => activate(link.dataset.openTab)));
+    })();
+  </script>
+</body>
+</html>
